@@ -4,7 +4,12 @@ import logging.handlers
 import random
 
 import numpy as np
+# import skvideo
+# skvideo.setFFmpegPath("D:\DEV\ffmpeg\ffmpeg-2023-05-18-git-01d9a84ef5-full_build\bin")
+# import skvideo
+# skvideo.setFFmpegPath('D:\\DEV\\ffmpeg\\ffmpeg-2023-05-18-git-01d9a84ef5-full_build\\bin')
 import skvideo.io
+
 import cv2
 import matplotlib.pyplot as plt
 
@@ -46,7 +51,8 @@ def train_bg_subtractor(inst, cap, num=500):
 
 
 def main():
-    log = logging.getLogger("main")
+    print("main")
+    # log = logging.getLogger("main")
 
     # creating exit mask from points, where we will be counting our vehicles
     base = np.zeros(SHAPE + (3,), dtype='uint8')
@@ -92,10 +98,10 @@ def main():
         # frame number that will be passed to pipline
         # this needed to make video from cutted frames
         frame_number += 1
-
-        # plt.imshow(frame)
-        # plt.show()
-        # return
+        
+        plt.imshow(frame)
+        plt.show()
+        return
 
         pipeline.set_context({
             'frame': frame,
@@ -106,10 +112,10 @@ def main():
 # ============================================================================
 
 if __name__ == "__main__":
-    log = utils.init_logging()
+    # log = utils.init_logging()
 
-    if not os.path.exists(IMAGE_DIR):
-        log.debug("Creating image directory `%s`...", IMAGE_DIR)
-        os.makedirs(IMAGE_DIR)
+    # if not os.path.exists(IMAGE_DIR):
+    #     #log.debug("Creating image directory `%s`...", IMAGE_DIR)
+    #     os.makedirs(IMAGE_DIR)
 
     main()
