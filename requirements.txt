@@ -13,3 +13,4 @@ sklearn==0.0
 PyQt5==5.10.1
 keras
 kito
+matplotlib
